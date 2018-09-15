@@ -1,32 +1,30 @@
-# 文档创建日期
-20180910
+# sa-lab-automation
 
-# 说明
-SmartLLV实验室工作量统计（自动化办公）平台
+> use go and vue.js to build a mini office automation system.
 
-# 需求分析
-考虑逐步将实验室需要用到的东西都做成实验室自己的自动化办公管理系统。后期还可以考虑添加文章分享等内容。
+## Build Setup
 
-## 角色
-- 超级管理员
-- 管理员
-- 成员：编辑、查看
+``` bash
+# install dependencies
+npm install
 
-## 工作量统计说明
-按照一定的规则进行工作量统计。**（不可以硬编码）**
+# serve with hot reload at localhost:8080
+npm run dev
 
-最后，需要能够导出工作量统计明细表格（excel格式！）
+# build for production with minification
+npm run build
 
-工作量item：description -> value 的映射（以时间序列进行排序：即什么时候，因为什么原因，增加/减少了多少工作量。）
+# build for production and view the bundle analyzer report
+npm run build --report
 
-通常情况下，只需要管理员编辑好条目之后，点击进行增删。最后会有一个工作量的汇总。汇总后的内容应该是对应实验室成员的劳务费用。
+# run unit tests
+npm run unit
 
-# 系统架构
-## 前端
-- node.js
-- vue.js
+# run e2e tests
+npm run e2e
 
-## 后端
-- go
-- gin
+# run all tests
+npm test
+```
 
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
