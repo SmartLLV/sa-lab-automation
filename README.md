@@ -2,6 +2,9 @@
 
 > use go and vue.js to build a mini office automation system.
 
+## Build Status
+![travis-ci](https://api.travis-ci.org/SmartLLV/sa-lab-automation.svg?branch=master)
+
 ## Build Setup
 
 ``` bash
