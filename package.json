@@ -1,7 +1,7 @@
 {
   "name": "sa-lab-automation",
   "version": "1.0.0",
-  "description": "use go and vue.js to build a mini office automation system.",
+  "description": "use go and vue.js to build a mini lab automation system.",
   "author": "zhongqin0820 <zhongqin0820@163.com>",
   "private": true,
   "scripts": {
