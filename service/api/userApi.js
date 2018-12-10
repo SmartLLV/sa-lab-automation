@@ -9,12 +9,16 @@ var conn = mysql.createConnection(models.mysql);
 conn.connect(function(err){
     if(err){
         console.log("链接失败");
-        throw(err)
+        // throw(err)
+        console.log(err.code);
     }else{
         console.log("链接成功");
         conn.query("CREATE TABLE user(username varchar(20), account varchar(20), password varchar(20), repeatPass varchar(20), email varchar(20), phone varchar(20), card varchar(20), birth varchar(20), sex varchar(20))", function(err,result){
-            if(err){throw err}else{
-                console.log("创建表成功")
+            if(err){
+              console.log(err.code);
+              // throw err
+            }else{
+              console.log("创建表成功")
             }
         })
     }
