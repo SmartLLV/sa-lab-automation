@@ -9,6 +9,20 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: './',
         productionSourceMap: false,
+        proxyTable: {
+            '/api':{
+                // target:'http://jsonplaceholder.typicode.com',
+                target: 'https://sa-labauto.herokuapp.com/api/',
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/api':''
+                }
+            },
+            // '/ms':{
+            //     target: 'https://www.easy-mock.com/mock/592501a391470c0ac1fab128',
+            //     changeOrigin: true
+            // }
+        },
         // Gzip off by default as many popular static hosts such as
         // Surge or Netlify already gzip all static assets for you.
         // Before setting to `true`, make sure to:
