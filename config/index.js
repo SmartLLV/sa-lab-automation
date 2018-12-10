@@ -30,7 +30,7 @@ module.exports = {
         proxyTable: {
             '/api':{
                 // target:'http://jsonplaceholder.typicode.com',
-                target: 'http://127.0.0.1:3000/api/',
+                target: 'https://sa-labauto.herokuapp.com/api/',
                 changeOrigin:true,
                 pathRewrite:{
                     '^/api':''
