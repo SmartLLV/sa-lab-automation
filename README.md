@@ -1,6 +1,6 @@
 # Repo Description
 
-> use go and vue.js to build a [mini lab automation system](https://smartllv.github.io/sa-lab-automation/dist/index.html).
+> use go and vue.js to build a [mini lab automation system](https://sa-labauto.herokuapp.com/).
 
 ## Build Status
 [![travis-ci](https://api.travis-ci.org/SmartLLV/sa-lab-automation.svg?branch=master)]
