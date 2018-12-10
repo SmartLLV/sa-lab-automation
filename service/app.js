@@ -10,5 +10,11 @@ app.use(bodyParser.urlencoded())
 
 app.use('/api/user', userApi);
 
-app.listen(3000);
-console.log('success listen at port: 3000')
+app.use(express.static(path.resolve(__dirname, '../dist')));
+app.get('/', function (req, res) {
+  const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
+  res.send(html);
+});
+let PORT = process.env.PORT || 3000;
+app.listen(PORT);
+console.log('success listen at port: ', PORT);
