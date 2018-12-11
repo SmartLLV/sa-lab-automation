@@ -2,7 +2,7 @@
 	<div>
 		<div class="crumbs crumbs-register">
 			<el-breadcrumb separator="/" class="register-title">
-                <el-breadcrumb-item><i class="el-icon-setting"></i>注册</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-setting"></i>超级管理员注册</el-breadcrumb-item>
             </el-breadcrumb>
 		</div>
 		<div class="userContent">
@@ -101,7 +101,7 @@
             return {
 				form: {
 					name: '',
-					account: '',					
+					account: '',
 					pass: '',
 					checkPass: '',
 					email: '',
@@ -143,10 +143,10 @@
         },
         methods:{
         	onSubmit(formName) {
-				const self = this;			
+				const self = this;
 				self.$refs[formName].validate((valid) => {
                     if (valid) {
-                        self.$http.post('/api/user/addUser',self.form).then(function(response) {
+                        self.$http.post('/api/user/setupSys',self.form).then(function(response) {
 							console.log(response);
 							self.$router.push('/register-success');
 						}).then(function(error) {
@@ -157,7 +157,7 @@
                         return false;
                     }
                 });
-				
+
         	},
         	onCancle() {
         		this.$router.push('/login');
@@ -165,7 +165,7 @@
 			getDateTimes(str) {
 				var str = new Date(str);
         		return str;
-			}       	
+			}
         }
 	}
 </script>
@@ -181,7 +181,7 @@
 		margin: 0 auto;
     	width: 50px;
     	font-size: 16px;
-	}	
+	}
 	.userContent {
 		width: 400px;
 		margin: 0 auto;

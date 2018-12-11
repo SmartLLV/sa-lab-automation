@@ -9,18 +9,33 @@ var conn = mysql.createConnection(models.mysql);
 conn.connect(function(err){
     if(err){
         console.log("链接失败");
-        // throw(err)
         console.log(err.code);
     }else{
         console.log("链接成功");
-        conn.query("CREATE TABLE user(username varchar(20), account varchar(20), password varchar(20), repeatPass varchar(20), email varchar(20), phone varchar(20), card varchar(20), birth varchar(20), sex varchar(20))", function(err,result){
+        let sql = $sql.user.create_table;
+        conn.query(sql, function(err,result){
             if(err){
               console.log(err.code);
-              // throw err
             }else{
               console.log("创建表成功")
             }
         })
+        // let sql=$sql.user.delete_table;
+        // conn.query(sql,(err,res)=>{
+        //   if (err) {
+        //     console.log(err.code);
+        //   } else {
+        //     console.log('delete successfully');
+        //     let sql = $sql.user.create_table;
+        //     conn.query(sql, function(err,result){
+        //         if(err){
+        //           console.log(err.code);
+        //         }else{
+        //           console.log("创建表成功")
+        //         }
+        //     })
+        //   }
+        // });
     }
 });
 
@@ -36,6 +51,30 @@ var jsonWrite = function(res, ret) {
 var dateStr = function(str) {
     return new Date(str.slice(0,7));
 }
+
+router.post('/setupSys', (req, res) => {
+    let sql = $sql.user.count_user;
+    conn.query(sql, (err,result)=>{
+      if (err) {
+        console.log(err)
+      } else if (result[0].num === 0) {
+        console.log('sys admin num: ',result[0].num);
+        let sql = $sql.user.add;
+        let params = req.body;
+        console.log(params);
+        console.log(params.birth);
+        conn.query(sql, [params.name, params.account, params.pass, params.checkPass,
+                        params.email, params.phone, params.card, dateStr(params.birth), params.sex, 1], function(err, result) {
+            if (err) {
+                console.log(err);
+            }
+            if (result) {
+                jsonWrite(res, result);
+            }
+        });
+      }
+    });
+});
 
 // 增加用户接口
 router.post('/addUser', (req, res) => {
