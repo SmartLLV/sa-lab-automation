@@ -8,7 +8,7 @@
 		<div class="eidt-success">
 			<div>
 				<i class="el-icon-check"></i>&nbsp;&nbsp;<span>恭喜您，修改成功</span>
-			</div>            	
+			</div>
 		</div>
 	</div>
 </template>
@@ -21,14 +21,14 @@
 
 				}
 			}
-		}	
+		}
     }
-	
+
 </script>
 
 <style>
 	.main-content{
-		background-image: url('../../../static/img/success.jpg');
+		/*background-image: url('../../../static/img/success.jpg');*/
 		background-size: cover;
 		height: 100%;
 	}
@@ -36,7 +36,7 @@
 		width: 400px;
 		margin: 0 auto;
 		position: relative;
-		
+
 	}
 	.eidt-success div {
 		position: absolute;

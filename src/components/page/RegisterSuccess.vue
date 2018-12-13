@@ -9,10 +9,10 @@
 			<div class="eidt-success">
                 <div class="show-success">
                     <i class="el-icon-check"></i>&nbsp;&nbsp;<span>恭喜您，注册成功</span>
-                </div> 
+                </div>
                 <div class="click-login">
                     <a href="#" @click="handleCommand()">跳转登录</a>
-                </div>            	
+                </div>
             </div>
 		</div>
 	</div>
@@ -31,9 +31,9 @@
             handleCommand() {
                 this.$router.push('/login');
             }
-        }	
+        }
     }
-	
+
 </script>
 
 <style>
@@ -50,11 +50,11 @@
 		margin: 0 auto;
     	width: 100px;
     	font-size: 16px;
-	}	
+	}
 	.userContent {
 		width: 100%;
 		margin: 0 auto;
-        background-image: url('../../../static/img/success.jpg');
+        /*background-image: url('../../../static/img/success.jpg');*/
 		background-size: cover;
 		height: 500px;
 	}
@@ -65,7 +65,7 @@
 		width: 400px;
 		margin: 0 auto;
 		position: relative;
-		
+
 	}
 	.eidt-success .show-success {
 		position: absolute;
