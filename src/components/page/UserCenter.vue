@@ -41,16 +41,25 @@
 <script>
 	export default {
 		data() {
-            return {
+      return {
 				form: {
-
+          name: '',
+          account: '',
+          email: '',
+          phone: '',
+          card: '',
+          birth: '',
+          sex: ''
 				}
 			}
 		},
+    mounted() {
+      this.getUserData();
+    },
 		methods:{
 			getUserData() {
-				const self = this;	
-				let username = localStorage.getItem('ms_user').name;			
+				const self = this;
+				let username = sessionStorage.getItem('ms_user').name;
 				self.$http.get('/api/user/getUser',{name: username}).then(function(response) {
 					console.log(response);
 					let result = response.data[0];
@@ -59,18 +68,16 @@
 					self.form.email = result.email;
 					self.form.phone = result.phone;
 					self.form.card = result.card;
-					self.form.birth = result.birth;
+					self.form.birth = result.birth.substring(0,result.birth.length-1);
 					self.form.sex = result.sex;
+          // sessionStorage.setItem('ms_userId', result.id);
 				}).then(function(error) {
 					console.log(error);
 				})
-			}				
-		},
-		mounted() {
-			this.getUserData();
-		}     	
+			}
+		}
     }
-	
+
 </script>
 
 <style>

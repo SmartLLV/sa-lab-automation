@@ -77,7 +77,7 @@
             return {
 				form: {
 					name: '',
-					account: '',					
+					account: '',
 					email: '',
 					phone: '',
 					card: '',
@@ -111,8 +111,8 @@
         },
         methods:{
         	getUserData() {
-				const self = this;	
-				let username = sessionStorage.getItem('ms_user').name;			
+				const self = this;
+				let username = sessionStorage.getItem('ms_user').name;
 				self.$http.get('/api/user/getUser',{name: username}).then(function(response) {
 					console.log(response);
 					let result = response.data[0];
@@ -121,13 +121,13 @@
 					self.form.email = result.email;
 					self.form.phone = result.phone;
 					self.form.card = result.card;
-					self.form.birth = new Date(result.birth);
+          self.form.birth = result.birth.substring(0,result.birth.length-1);
 					self.form.sex = result.sex;
 					sessionStorage.setItem('ms_userId', result.id);
 				}).then(function(error) {
 					console.log(error);
 				})
-			},			
+			},
 			updateUserData(formName) {
 				const self = this;
 				let formData = {
@@ -138,11 +138,11 @@
 					birth: self.form.birth,
 					sex: self.form.sex
 				};
-						
+
 				self.$refs[formName].validate((valid) => {
                     if (valid) {
                         self.$http.post('/api/user/updateUser',formData).then(function(response) {
-							console.log(response);										
+							console.log(response);
 							self.$router.push('/success');
 						}).then(function(error) {
 							console.log(error);
@@ -155,12 +155,12 @@
 			},
         	onCancle() {
         		 this.$router.push('/userCenter');
-        	}       	
+        	}
 		},
 		//初始化
 		mounted() {
 			this.getUserData();
-		}  
+		}
 	}
 </script>
 
