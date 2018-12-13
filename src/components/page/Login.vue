@@ -21,10 +21,10 @@
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
                 </div>
-                <p class="register" @click="handleCommand()">注册</p>  
+                <!-- <p class="register" @click="handleCommand()">注册</p>   -->
             </el-form>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
@@ -38,7 +38,7 @@
                 ruleForm: {
                     name: '',
                     password: '',
-                    validate: ''                    
+                    validate: ''
                 },
                 rules: {
                     name: [
@@ -54,6 +54,18 @@
             }
         },
         mounted() {
+            // this.$router.push('/register');
+            const self = this;
+            self.$http.post('/api/user/countUser', '')
+            .then((response) => {
+              console.log(response.data)
+              if (response.data.num == 0) {
+                this.$router.push('/register');
+                // return;
+              }
+            }).then((error) => {
+                console.log(error);
+            })
             this.identifyCode = "";
             this.makeCode(this.identifyCodes, 4);
         },
@@ -62,7 +74,7 @@
                 // debounceAjax(formName)
                 const self = this;
                 self.$refs[formName].validate((valid) => {
-                    if (valid) {                      
+                    if (valid) {
                         self.$http.post('/api/user/login',JSON.stringify(self.ruleForm))
                         .then((response) => {
                             console.log(response);
@@ -78,8 +90,8 @@
                                 self.$router.push('/readme');
                                 sessionStorage.setItem('ms_username',self.ruleForm.name);
                                 sessionStorage.setItem('ms_user',JSON.stringify(self.ruleForm));
-                                console.log(JSON.stringify(self.ruleForm));  
-                            }                            
+                                console.log(JSON.stringify(self.ruleForm));
+                            }
                         }).then((error) => {
                             console.log(error);
                         })
@@ -89,9 +101,9 @@
                     }
                 });
             },
-            handleCommand() {
-                this.$router.push('/register');
-            },
+            // handleCommand() {
+            //     this.$router.push('/register');
+            // },
             randomNum(min, max) {
                 return Math.floor(Math.random() * (max - min) + min);
             },
@@ -123,7 +135,7 @@
                     if (valid) {
                         localStorage.setItem('ms_username',self.ruleForm.name);
                         localStorage.setItem('ms_user',JSON.stringify(self.ruleForm));
-                        console.log(JSON.stringify(self.ruleForm));                        
+                        console.log(JSON.stringify(self.ruleForm));
                         self.$http.post('/api/user/login',JSON.stringify(self.ruleForm))
                         .then((response) => {
                             console.log(response);
@@ -137,7 +149,7 @@
                                 self.errInfo = '密码错误';
                             } else if (response.status == 200) {
                                 self.$router.push('/readme');
-                            }                            
+                            }
                         }).then((error) => {
                             console.log(error);
                         })

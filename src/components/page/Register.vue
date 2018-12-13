@@ -108,7 +108,8 @@
 					phone: '',
 					card: '',
 					birth: '',
-					sex: ''
+					sex: '',
+          auth: ''
                 },
                 rules: {
                     name: [
@@ -140,6 +141,20 @@
                     ]
                 }
 			}
+        },
+        mounted() {
+            const self = this;
+            self.$http.post('/api/user/countUser', '')
+            .then((response) => {
+              console.log(response.data)
+              if (response.data.num != 0) {
+                self.$router.push('/login');
+                // return;
+              }
+            }).then((error) => {
+                console.log(error);
+            });
+            auth=1;
         },
         methods:{
         	onSubmit(formName) {

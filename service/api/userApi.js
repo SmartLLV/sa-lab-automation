@@ -17,9 +17,9 @@ conn.connect(function(err){
             if(err){
               console.log(err.code);
             }else{
-              console.log("创建表成功")
+              console.log("创建表成功");
             }
-        })
+        });
         // let sql=$sql.user.delete_table;
         // conn.query(sql,(err,res)=>{
         //   if (err) {
@@ -52,19 +52,37 @@ var dateStr = function(str) {
     return new Date(str.slice(0,7));
 }
 
+router.post('/countUser', (req, res) => {
+  let sql = $sql.user.count_user;
+  console.log('enter count: $(sql)');
+  conn.query(sql, (err,result)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result[0].num)
+      if (result[0].num == 0) {
+        res.status(200).json({num:'0'})
+        return;
+      }
+    }
+    console.log('err -1')
+    res.status(200).json({num:'-1'})
+  });
+});
+
 router.post('/setupSys', (req, res) => {
     let sql = $sql.user.count_user;
     conn.query(sql, (err,result)=>{
       if (err) {
         console.log(err)
-      } else if (result[0].num === 0) {
+      } else if (result[0].num == 0) {
         console.log('sys admin num: ',result[0].num);
         let sql = $sql.user.add;
         let params = req.body;
         console.log(params);
         console.log(params.birth);
         conn.query(sql, [params.name, params.account, params.pass, params.checkPass,
-                        params.email, params.phone, params.card, dateStr(params.birth), params.sex, 1], function(err, result) {
+                        params.email, params.phone, params.card, dateStr(params.birth), params.sex, params.auth], function(err, result) {
             if (err) {
                 console.log(err);
             }
