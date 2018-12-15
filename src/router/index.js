@@ -20,10 +20,10 @@ export default new Router({
                 {
                     path: '/upload',
                     component: resolve => require(['../components/page/Upload.vue'], resolve)       // Vue-Core-Image-Upload组件
-                },         
+                },
                 {
                     path: '/userCenter',
-                    component: resolve => require(['../components/page/UserCenter.vue'], resolve)    // 拖拽列表组件 
+                    component: resolve => require(['../components/page/UserCenter.vue'], resolve)    // 拖拽列表组件
                 },
                 {
                     path: '/modifyUser',
@@ -36,7 +36,11 @@ export default new Router({
                 {
                     path: '/success',
                     component: resolve => require(['../components/page/Success.vue'], resolve)
-                }
+                },
+                {
+                    path: '/user',
+                    component: resolve => require(['../components/user/User.vue'], resolve)
+                },
             ]
         },
         {
@@ -51,5 +55,6 @@ export default new Router({
             path: '/login',
             component: resolve => require(['../components/page/Login.vue'], resolve)
         },
+
     ]
 })

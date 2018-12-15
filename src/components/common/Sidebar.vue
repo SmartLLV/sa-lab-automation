@@ -47,7 +47,12 @@
                                 title: '修改密码'
                             }
                         ]
-                    }
+                    },
+                    {
+                      icon: 'el-icon-setting',
+                      index: 'user',
+                      title: '用户管理'
+                    },
                 ]
             }
         },
