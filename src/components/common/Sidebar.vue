@@ -32,7 +32,7 @@
                     {
                         icon: 'el-icon-setting',
                         index: 'userCenter',
-                        title: '设置',
+                        title: '个人中心',
                         subs: [
                             {
                                 index: 'upload',
@@ -40,7 +40,7 @@
                             },
                             {
                                 index: 'modifyUser',
-                                title: '修改用户'
+                                title: '修改信息'
                             },
                             {
                                 index: 'modifyPassword',

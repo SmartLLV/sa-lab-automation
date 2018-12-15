@@ -144,6 +144,7 @@
         },
         mounted() {
             const self = this;
+            self.form.auth=1;
             self.$http.post('/api/user/countUser', '')
             .then((response) => {
               console.log(response.data)
@@ -154,7 +155,6 @@
             }).then((error) => {
                 console.log(error);
             });
-            auth=1;
         },
         methods:{
         	onSubmit(formName) {

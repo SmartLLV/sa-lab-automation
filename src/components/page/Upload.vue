@@ -7,10 +7,10 @@
             </el-breadcrumb>
         </div>
         <div class="content-title">支持拖拽</div>
-        <div class="plugins-tips">
+        <!-- <div class="plugins-tips">
             Element UI自带上传组件。
             访问地址：<a href="http://element.eleme.io/#/zh-CN/component/upload" target="_blank">Element UI Upload</a>
-        </div>
+        </div> -->
         <el-upload
             class="upload-demo"
             drag
@@ -21,10 +21,10 @@
             <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
         </el-upload>
         <div class="content-title">支持裁剪</div>
-        <div class="plugins-tips">
+        <!-- <div class="plugins-tips">
             Vue-Core-Image-Upload：一款轻量级的vue上传插件，支持裁剪。
             访问地址：<a href="https://github.com/Vanthink-UED/vue-core-image-upload" target="_blank">Vue-Core-Image-Upload</a>
-        </div>
+        </div> -->
         <img class="pre-img" :src="src" alt="">
         <vue-core-image-upload :class="['pure-button','pure-button-primary','js-btn-crop']"
                                :crop="true"

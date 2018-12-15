@@ -54,7 +54,7 @@ var dateStr = function(str) {
 
 router.post('/countUser', (req, res) => {
   let sql = $sql.user.count_user;
-  console.log('enter count: $(sql)');
+  // console.log('enter count: $(sql)');
   conn.query(sql, (err,result)=>{
     if (err) {
       console.log(err);
@@ -65,7 +65,7 @@ router.post('/countUser', (req, res) => {
         return;
       }
     }
-    console.log('err -1')
+    // console.log('err -1')
     res.status(200).json({num:'-1'})
   });
 });

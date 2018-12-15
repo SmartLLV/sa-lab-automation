@@ -67,7 +67,7 @@
 					id: parseInt(sessionStorage.getItem('ms_userId')),
 					pass: self.form.pass,
 					checkPass: self.form.checkPass
-				};			
+				};
 				self.$refs[formName].validate((valid) => {
                     if (valid) {
                         self.$http.post('/api/user/modifyPassword',formData).then(function(response) {
@@ -84,15 +84,16 @@
         	},
         	onCancle() {
         		this.$router.push('/userCenter');
-        	}        	
+        	}
         }
 	}
 </script>
 
 <style>
 	.userContent {
+    position: relative;
 		width: 400px;
 		margin: 0 auto;
 	}
 </style>
-   
+
