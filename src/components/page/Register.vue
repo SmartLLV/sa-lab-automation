@@ -1,9 +1,7 @@
 <template>
 	<div>
 		<div class="crumbs crumbs-register">
-			<el-breadcrumb separator="/" class="register-title">
-                <el-breadcrumb-item><i class="el-icon-setting"></i>超级管理员注册</el-breadcrumb-item>
-            </el-breadcrumb>
+			超级管理员注册
 		</div>
 		<div class="userContent">
 			<el-form ref="form" :model="form" :rules="rules" label-width="80px">
@@ -30,7 +28,7 @@
 				</el-form-item>
 				<el-form-item prop="birth" label="出生日期">
 					<el-col :span="24">
-						<el-date-picker type="date" placeholder="选择日期" v-model="form.birth" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+						<el-date-picker type="date" placeholder="选择日期" v-model="form.birth" value-format="yyyy-MM-dd HH:mm:ss" style="width: 100%;"></el-date-picker>
 					</el-col>
 				</el-form-item>
 				<el-form-item prop="sex" label="性别">
@@ -45,7 +43,11 @@
 				</el-form-item>
 			</el-form>
 		</div>
+    <div class="main-footer">
+    Copyright &copy; 2018- <a href="https://smartllv.com">SmartLLV</a>. All rights reserved.
+  </div>
 	</div>
+
 </template>
 
 <script>
@@ -204,4 +206,15 @@
 	.select-sex {
 		width: 320px;
 	}
+  .main-footer {
+    -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    text-align: center;
+    padding: 5px 15px;
+    color: #444;
+    width: 100%;
+  }
+
 </style>

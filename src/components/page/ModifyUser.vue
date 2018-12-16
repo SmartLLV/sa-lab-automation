@@ -25,7 +25,7 @@
 				</el-form-item>
 				<el-form-item prop="birth" label="出生日期">
 					<el-col :span="24">
-						<el-date-picker type="date" placeholder="选择日期" v-model="form.birth" value-format="yyyy-MM-dd" style="width: 100%;"></el-date-picker>
+						<el-date-picker type="date" placeholder="选择日期" v-model="form.birth" value-format="yyyy-MM-dd HH:mm:ss" style="width: 100%;"></el-date-picker>
 					</el-col>
 				</el-form-item>
 				<el-form-item prop="sex" label="性别">
@@ -121,7 +121,8 @@
 					self.form.email = result.email;
 					self.form.phone = result.phone;
 					self.form.card = result.card;
-          self.form.birth = result.birth.substring(0,result.birth.length-1);
+          self.form.birth = result.birth;
+          // .substring(0,result.birth.length-1);
 					self.form.sex = result.sex;
 					sessionStorage.setItem('ms_userId', result.id);
 				}).then(function(error) {

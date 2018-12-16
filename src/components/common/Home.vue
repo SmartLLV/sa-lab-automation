@@ -11,9 +11,10 @@
 <script>
     import vHead from './Header.vue';
     import vSidebar from './Sidebar.vue';
+    import vFooter from './Footer.vue';
     export default {
         components:{
-            vHead, vSidebar
+            vHead, vSidebar, vFooter
         }
     }
 </script>
