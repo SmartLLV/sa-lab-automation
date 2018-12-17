@@ -28,7 +28,7 @@
         </el-table-column>
         <el-table-column prop="mobile" label="电话">
         </el-table-column>
-        <el-table-column label="用户状态">
+        <el-table-column label="成员状态">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.mg_state" @change="change(scope.row)">
             </el-switch>
