@@ -51,7 +51,7 @@
                     {
                       icon: 'el-icon-setting',
                       index: 'user',
-                      title: '用户管理'
+                      title: '成员管理'
                     },
                 ]
             }

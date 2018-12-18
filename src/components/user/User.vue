@@ -5,8 +5,8 @@
       <el-col :span="24">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-          <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+          <el-breadcrumb-item>成员管理</el-breadcrumb-item>
+          <el-breadcrumb-item>成员列表</el-breadcrumb-item>
         </el-breadcrumb>
       </el-col>
     </el-row>
@@ -17,7 +17,7 @@
         <el-input placeholder="请输入内容" class="search-input" v-model="query" @keydown.native.enter="initList">
           <el-button slot="append" icon="el-icon-search" @click="initList"></el-button>
         </el-input>
-        <el-button type="success" plain @click="addDialogFormVisible=true">添加用户</el-button>
+        <el-button type="success" plain @click="addDialogFormVisible=true">添加成员</el-button>
       </el-col>
     </el-row>
     <!-- 表格 -->
@@ -28,7 +28,7 @@
         </el-table-column>
         <el-table-column prop="mobile" label="电话">
         </el-table-column>
-        <el-table-column label="成员状态">
+        <el-table-column label="成员">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.mg_state" @change="change(scope.row)">
             </el-switch>
@@ -48,10 +48,10 @@
       </el-pagination>
     </div>
 
-    <!-- 添加用户 -->
-    <el-dialog title="添加用户" :visible.sync="addDialogFormVisible">
+    <!-- 添加成员 -->
+    <el-dialog title="添加成员" :visible.sync="addDialogFormVisible">
       <el-form :model="addForm" label-width="80px" :rules="rules" ref="addUserForm">
-        <el-form-item label="用户名" prop="username">
+        <el-form-item label="成员名" prop="username">
           <el-input v-model="addForm.username" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
@@ -70,10 +70,10 @@
       </div>
     </el-dialog>
 
-    <!-- 修改用户 -->
-    <el-dialog title="修改用户" :visible.sync="editDialogFormVisible">
+    <!-- 修改成员 -->
+    <el-dialog title="修改成员" :visible.sync="editDialogFormVisible">
       <el-form :model="editForm" label-width="80px" :rules="rules" ref="editUserForm">
-        <el-form-item label="用户名" prop="username">
+        <el-form-item label="成员名" prop="username">
           <el-input v-model="editForm.username" auto-complete="off" :disabled="true"></el-input>
         </el-form-item>
         <el-form-item label="邮箱" prop="email">
@@ -92,7 +92,7 @@
     <!-- 分配角色 -->
     <el-dialog title="分配角色" :visible.sync="grantDialogFormVisible">
       <el-form :model="grantForm" label-width="120px">
-        <el-form-item label="当前用户：" prop="username">
+        <el-form-item label="当前成员：" prop="username">
           <el-tag type="info">{{grantForm.username}}</el-tag>
         </el-form-item>
         <el-form-item label="请选择角色：">
@@ -149,7 +149,7 @@ export default {
       roleId: "",
       rules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
+          { required: true, message: "请输入成员名", trigger: "blur" }
         ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
         email: [
@@ -193,13 +193,13 @@ export default {
         this.loading = false
       })
     },
-    //改变用户状态
+    //改变成员状态
     change(row) {
       changeUserState({ uid: row.id, type: row.mg_state }).then(res => {
         if (res.meta.status === 200) {
           this.$message({
             type: "success",
-            message: "修改用户状态成功"
+            message: "修改成员状态成功"
           });
         } else {
           this.$message({
@@ -209,7 +209,7 @@ export default {
         }
       });
     },
-    //添加用户
+    //添加成员
     addUserSubmit(formName) {
       console.log(formName);
       this.$refs[formName].validate(valide => {
@@ -227,7 +227,7 @@ export default {
         }
       });
     },
-    //编辑用户
+    //编辑成员
     getUser(row) {
       this.editDialogFormVisible = true;
       getUserById(row.id).then(res => {
@@ -239,7 +239,7 @@ export default {
         }
       });
     },
-    //修改用户
+    //修改成员
     editUserSubmit(formName) {
       this.$refs[formName].validate(valide => {
         if (valide) {
@@ -259,13 +259,13 @@ export default {
     },
     //显示删除对话框
     showDeleteUser(row) {
-      this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
+      this.$confirm("此操作将永久删除该成员, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       })
         .then(() => {
-          //执行删除用户操作
+          //执行删除成员操作
           deleteUser(row.id).then(res => {
             if (res.meta.status === 200) {
               this.$message({
