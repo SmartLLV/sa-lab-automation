@@ -1,10 +1,16 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+  <keep-alive>
+    <router-view/>
+  </keep-alive>
 </template>
-<style>
-    @import "../static/css/main.css";
-    @import "../static/css/color-dark.css";     /*深色主题*/
-    /*@import "../static/css/theme-green/color-green.css";   浅绿色主题*/
+
+<script>
+export default {
+}
+</script>
+
+<style lang='sass'>
+  @import './common/style/index'
+  .el-message-box
+      vertical-align: baseline
 </style>
