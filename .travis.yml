@@ -9,7 +9,7 @@ install:
 
 # npmm
 script:
-  - npm run build
+  - npm run build-fe
 
 # 将静态资源推送到 master 分支上
 after_script:
