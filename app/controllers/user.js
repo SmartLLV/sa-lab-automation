@@ -96,61 +96,61 @@ exports.sendCode = async ctx => {
 }
 
 exports.register = async ctx => {
-  const { phone, password, checkCode } = ctx.request.body
+  const { phone, password } = ctx.request.body
   const session = ctx.session
-  if (session.code === checkCode) {
+  // if (session.code === checkCode) {
     // 判断是否已经注册
-    const hasRegister = await User.findOne({phone_num: phone})
-    if (hasRegister) {
-      ctx.body = {
-        code: 603,
-        data: MapMsg[603]
-      }
-      return
-    }
-    // 数据库要新增一条数据
-    const create = await User.create({user_name: registerName(), user_pwd: password, phone_num: phone})
-    if (create) {
-      // 创建成功
-      ctx.body = {
-        code: 1,
-        message: MapMsg[1]
-      }
-    }
-  } else {
-    // 验证码不正确
+  const hasRegister = await User.findOne({phone_num: phone})
+  if (hasRegister) {
     ctx.body = {
-      code: 5,
-      message: MapMsg[5]
+      code: 603,
+      data: MapMsg[603]
+    }
+    return
+  }
+  // 数据库要新增一条数据
+  const create = await User.create({user_name: registerName(), user_pwd: password, phone_num: phone})
+  if (create) {
+    // 创建成功
+    ctx.body = {
+      code: 1,
+      message: MapMsg[1]
     }
   }
+  // } else {
+  //   // 验证码不正确
+  //   ctx.body = {
+  //     code: 5,
+  //     message: MapMsg[5]
+  //   }
+  // }
 }
 
 exports.reset = async ctx => {
-  const { phone, password, checkCode } = this.request.body
+  const { phone, password } = this.request.body
   const { code } = ctx.session
   let user
-  if (code === checkCode) {
-    try {
-      user = await User.findOne({phone_num: +phone}).exec()
-      user.user_pwd = password
-      await user.save()
-      ctx.body = {
-        code: 1
-      }
-    } catch (err) {
-      console.log(err)
-      ctx.body = {
-        code: 0,
-        data: err
-      }
-    }
-  } else {
+  // if (code === checkCode) {
+  try {
+    user = await User.findOne({phone_num: +phone}).exec()
+    user.user_pwd = password
+    await user.save()
     ctx.body = {
-      code: 5,
-      data: MapMsg[5]
+      code: 1
+    }
+  } catch (err) {
+    console.log(err)
+    ctx.body = {
+      code: 0,
+      data: err
     }
   }
+  // } else {
+  //   ctx.body = {
+  //     code: 5,
+  //     data: MapMsg[5]
+  //   }
+  // }
 }
 
 exports.logOut = async ctx => {
