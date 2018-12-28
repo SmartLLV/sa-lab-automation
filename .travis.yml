@@ -9,7 +9,7 @@ install:
 
 # npmm
 script:
-  - npm run test
+  - npm run lint-fe
 
 # 将静态资源推送到 master 分支上
 after_script:
@@ -22,7 +22,7 @@ after_script:
   - git commit -m "ci/cd test"
   # GH_TOKEN 为你的 github 允许 travis 访问生成的凭证
   # GH_REF 告诉 travis 往哪个仓库推送代码，具体值下面配置
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:dev
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
 
 branches:
@@ -32,4 +32,4 @@ branches:
 env:
   global:
     # 定义往哪个仓库推送代码，注意事项见下面
-    - GH_REF: github.com/SmartLLV/sa-lab-automation.git
+    - GH_REF: github.com/sa-2018-fall/sa-be.git
