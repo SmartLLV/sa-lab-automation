@@ -28,7 +28,7 @@ after_script:
 branches:
   only:
     # 设置监控分支，当 master 分支代码变化时，执行这个程序
-    - dev
+    - master
 env:
   global:
     # 定义往哪个仓库推送代码，注意事项见下面
