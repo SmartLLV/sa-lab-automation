@@ -140,10 +140,10 @@ Shop.findOne({}).exec((err, shop) => {
     dish_price: 14,
     dish_pics: 'https://fuss10.elemecdn.com/3/ca/a84cb3f8cb2d6cd0cfb2d8726efa3jpeg.jpeg?imageMogr2/thumbnail/100x100/format/webp/quality/85'
   })
-  // Menu.find({}).exec((err, menu) => {
-  //   if (err) console.log(err)
-  //   console.log(menu)
-  // })
+  Menu.find({}).exec((err, menu) => {
+    if (err) console.log(err)
+    console.log(menu)
+  })
 })
 
 // 添加管理员，配置不同模块的权限
