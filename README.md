@@ -23,7 +23,7 @@
 顶层就是vue-cli的结构，主要看前端src和后台server的结构
 
 ```md
-─ /
+─.
  ├── app
  ├── ├── common            # 工具
  ├── ├── controllers       # 业务
