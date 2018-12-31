@@ -6,8 +6,10 @@
 
 网站使用GitHub->Heroku pipeline 实时部署在：[https://sa-2018-fall.herokuapp.com](https://sa-2018-fall.herokuapp.com)
 
-用户名：12345678910
-密码：123456
+# 展示
+- 9.1 [用户短视频](https://sa-2018-fall.herokuapp.com) （用户名：12345678910；密码：123456）
+- 9.2 [商家短视频](https://sa-2018-fall.herokuapp.com) （用户名：11112222333；密码：123456）
+- 9.3 [管理员短视频](https://sa-2018-fall.herokuapp.com/admin) （用户名：admin；密码：123456）
 
 功能基本实现。
 
