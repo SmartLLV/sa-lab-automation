@@ -28,6 +28,7 @@ exports.login = async ctx => {
   let match
   try {
     admin = await Admin.findOne({admin_name: adminName}).exec()
+    // console.log(admin)
     if (admin) {
       match = await admin.comparePassword(adminPwd, admin.admin_pwd)
     }
@@ -48,7 +49,14 @@ exports.login = async ctx => {
     }
   } else {
     ctx.body = {
-      code: 0,
+      code: 1,
+      data: {
+        adminName: admin.admin_name,
+        shopMp: admin.shop_mp,
+        shopTypeMp: admin.shop_type_mp,
+        foodTypeMp: admin.food_type_mp,
+        flagSuper: admin.is_super
+      },
       message: MapMsg[4]
     }
   }
