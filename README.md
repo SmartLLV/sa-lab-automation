@@ -1,6 +1,16 @@
 # 系统分析与设计秋季学期大作业-后端
 这是一个点餐系统，包含用户点餐、商家出餐、管理员管理三部分功能。[![Build Status](https://travis-ci.org/sa-2018-fall/sa-be.svg?branch=master)](https://travis-ci.org/sa-2018-fall/sa-be)
 
+# 其它
+网站数据使用在线mongodb数据库服务提供商[www.mlab.com](www.mlab.com)提供的存储服务。
+
+网站使用GitHub->Heroku pipeline 实时部署在：[https://sa-2018-fall.herokuapp.com](https://sa-2018-fall.herokuapp.com)
+
+用户名：12345678910
+密码：123456
+
+功能基本实现。
+
 ## 使用的框架、插件等
 
 * 用koa2做后台，在node高版本直接用async、await
